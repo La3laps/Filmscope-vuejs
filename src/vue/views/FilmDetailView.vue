@@ -1,28 +1,32 @@
 <template>
   <div class="film-detail-container">
-    <button class="back-btn" @click="router.back()">« Go back</button>
+    <button class="back-btn" @click="router.back()">❮ GO BACK</button>
 
     <div v-if="film" class="film-detail">
       <div class="film-header">
-        <img
-          :src="film.poster_path ? IMAGE_URL + film.poster_path : '/background_black.jpg'"
-          :alt="film.title"
-          class="film-poster"
-        />
+        <div class="poster-column">
+          <img
+            :src="film.poster_path ? IMAGE_URL + film.poster_path : '/background_black.jpg'"
+            :alt="film.title"
+            class="film-poster"
+          />
+
+          <button class="favorite-btn" :class="{ active: isFav }" @click="toggleFavorite">
+            {{ isFav ? '🤍' : '🩶' }}
+          </button>
+        </div>
 
         <div class="film-info">
           <h1>{{ film.title }}</h1>
 
           <div class="film-meta">
-            <span class="release-date"><strong>Release date:</strong> {{ film.release_date }}</span>
+            <span class="release-date">
+              <strong>Release date:</strong> {{ film.release_date }}
+            </span>
             <span class="rating">
               <strong>Rating:</strong> {{ film.vote_average?.toFixed(1) }} / 10
             </span>
           </div>
-
-          <button class="favorite-btn" :class="{ active: isFav }" @click="toggleFavorite">
-            {{ isFav ? '🤍' : '❤️' }}
-          </button>
         </div>
       </div>
 
@@ -148,6 +152,7 @@ onMounted(async () => {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  margin-left: 30px;
 }
 
 .film-info h1 {
@@ -171,10 +176,25 @@ onMounted(async () => {
 }
 
 .favorite-btn {
-  margin: 10px 100px;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  min-width: 180px;
+  margin: 10px 0;
+
   padding: 10px 16px;
   border-radius: 8px;
-  font-weight: 500;
+
+  font-weight: 600;
+  font-size: 16px;
+
+  background: #ffffff; /* solid white */
+  color: #000; /* 👈 important contrast */
+
+  border: none; /* 👈 remove default border */
+  cursor: pointer;
+
+  transition: all 0.2s ease;
 }
 
 .favorite-btn.active {
@@ -215,7 +235,7 @@ onMounted(async () => {
 .film-trailer {
   position: fixed;
   top: 0;
-  left: 0;
+  left: -18%;
   width: 100vw;
   height: 100vh;
   overflow: hidden;

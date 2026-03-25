@@ -4,6 +4,7 @@
 
     <input
       :value="modelValue"
+      :disabled="disabled"
       @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)"
       placeholder="Browse movies..."
       type="search"
@@ -16,6 +17,10 @@ defineProps({
   modelValue: {
     type: String,
     default: '',
+  },
+  disabled: {
+    type: Boolean,
+    default: false,
   },
 })
 
@@ -49,6 +54,12 @@ defineEmits(['update:modelValue'])
     border 0.2s ease,
     box-shadow 0.2s ease;
 }
+
+.search-bar.disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+
 .search-bar input {
   flex: 1;
   border: none;

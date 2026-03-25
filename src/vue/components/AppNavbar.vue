@@ -22,16 +22,22 @@
           </li>
         </ul>
       </nav>
-      <SearchBar v-model="searchStore.query" />
+      <SearchBar
+        v-model="searchStore.query"
+        :disabled="route.path !== '/'"
+        :class="{ disabled: route.path !== '/' }"
+      />
     </div>
   </header>
 </template>
 
 <script setup lang="ts">
+import { useRoute } from 'vue-router'
 import { useSearchStore } from '@/typescript/stores/search'
 import SearchBar from '@/vue/components/SearchBar.vue'
 import RotatingTreeIcon from '@/vue/components/RotatingTreeIcon.vue'
 
+const route = useRoute()
 const searchStore = useSearchStore()
 </script>
 
