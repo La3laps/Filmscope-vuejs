@@ -14,7 +14,8 @@ html::-webkit-scrollbar {
   display: none;
 }
 
-body {
+body,
+button {
   background: url('/background.jpg') no-repeat center center fixed;
   background-size: cover;
   margin: 0;

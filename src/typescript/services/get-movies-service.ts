@@ -26,3 +26,15 @@ export async function searchMovies(query: string, page = 1) {
 
   return res.json()
 }
+
+export async function getMovieVideos(movieId: number) {
+  const res = await fetch(
+    `${import.meta.env.VITE_TMDB_BASE_URL}/movie/${movieId}/videos?api_key=${import.meta.env.VITE_TMDB_API_KEY}`,
+  )
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch movie videos')
+  }
+
+  return res.json()
+}

@@ -39,11 +39,13 @@ const searchStore = useSearchStore()
 .navbar {
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 100;
   font-family: 'Work Sans', sans-serif;
 }
 header {
+  position: sticky;
   background: var(--main-green-darker);
+  z-index: 9999;
 }
 .container {
   width: 80%;

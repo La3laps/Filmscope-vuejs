@@ -71,6 +71,7 @@ async function fetchMovies() {
 
   films.value = data.results
   totalPages.value = Math.min(data.total_pages, 500)
+
   if (currentPage.value > totalPages.value) {
     currentPage.value = totalPages.value
   }
