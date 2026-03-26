@@ -1,0 +1,1 @@
+.film-grid-container[data-v-7c46458a]{width:100%;display:flex;align-items:center;justify-content:center;padding:20px}.film-grid[data-v-7c46458a]{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:20px;max-width:1200px;width:100%}.fade-in[data-v-7c46458a]{animation:fadeIn-7c46458a .5s ease-in}@keyframes fadeIn-7c46458a{0%{opacity:0}to{opacity:1}}
